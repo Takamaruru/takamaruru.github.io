@@ -64,6 +64,73 @@ function LabCellViz({ project, index }) {
       </svg>
     );
   }
+  if (project.id === "reverie") {
+    const placed = new Set(["0-0","1-0","2-0","3-0","0-1","1-1","0-2","1-2","0-3","1-3","2-3"]);
+    const cell = 36;
+    const ox = 28, oy = 28;
+    return (
+      <svg className="lab__cell-viz" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice">
+        <rect width="200" height="200" fill={`hsl(${hue}, 50%, 12%)`} opacity="0.35" />
+        <defs>
+          <linearGradient id={`rev-lab-${index}`} x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor={`hsl(${hue}, 70%, 70%)`} />
+            <stop offset="1" stopColor={`hsl(${(hue + 40) % 360}, 60%, 55%)`} />
+          </linearGradient>
+        </defs>
+        <rect x={ox} y={oy} width={4 * cell} height={4 * cell}
+          fill={`url(#rev-lab-${index})`} opacity="0.7" />
+        {Array.from({ length: 5 }).map((_, r) => (
+          <line key={`h${r}`} x1={ox} y1={oy + r * cell} x2={ox + 4 * cell} y2={oy + r * cell}
+            stroke="rgba(255,255,255,0.5)" strokeDasharray="2 2" />
+        ))}
+        {Array.from({ length: 5 }).map((_, c) => (
+          <line key={`v${c}`} x1={ox + c * cell} y1={oy} x2={ox + c * cell} y2={oy + 4 * cell}
+            stroke="rgba(255,255,255,0.5)" strokeDasharray="2 2" />
+        ))}
+        {[...placed].map(key => {
+          const [c, r] = key.split("-").map(Number);
+          return (
+            <rect key={key} x={ox + c * cell + 1} y={oy + r * cell + 1}
+              width={cell - 2} height={cell - 2}
+              fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.7)" strokeWidth="0.8" />
+          );
+        })}
+        {/* loose piece */}
+        <g transform="translate(160 165) rotate(-15)">
+          <rect x="-14" y="-14" width="28" height="28" rx="2"
+            fill={`hsl(${hue}, 75%, 72%)`} stroke="#fff" strokeWidth="1.5" />
+        </g>
+      </svg>
+    );
+  }
+  if (project.id === "logogo") {
+    return (
+      <svg className="lab__cell-viz" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice">
+        <rect width="200" height="200" fill={`hsl(${hue}, 40%, 10%)`} opacity="0.5" />
+        {/* canvas grid */}
+        {[1,2,3].map(i => (
+          <line key={`gx${i}`} x1={50 * i} y1="0" x2={50 * i} y2="200"
+            stroke="rgba(255,255,255,0.05)" />
+        ))}
+        {[1,2,3].map(i => (
+          <line key={`gy${i}`} x1="0" y1={50 * i} x2="200" y2={50 * i}
+            stroke="rgba(255,255,255,0.05)" />
+        ))}
+        {/* logo composition */}
+        <circle cx="100" cy="100" r="58" fill="none"
+          stroke={`hsl(${hue}, 80%, 55%)`} strokeWidth="9" />
+        <rect x="72" y="72" width="56" height="56" rx="8"
+          fill={`hsl(${(hue + 30) % 360}, 70%, 60%)`} transform="rotate(12 100 100)" />
+        <text x="100" y="108" textAnchor="middle" fontFamily="sans-serif"
+          fontWeight="800" fontSize="32" fill="#0e0c0a">LG</text>
+        {/* selection corners */}
+        {[[36,36],[164,36],[36,164],[164,164]].map(([x,y], i) => (
+          <rect key={i} x={x - 2} y={y - 2} width="4" height="4"
+            fill={`hsl(${hue}, 90%, 70%)`} />
+        ))}
+      </svg>
+    );
+  }
   if (project.id === "temportal") {
     const peers = [
       { x: 100, y: 50,  g: "a" },

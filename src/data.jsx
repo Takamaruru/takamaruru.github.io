@@ -116,6 +116,46 @@ const DATA = {
       hue: 158, // mint / signal green
       theme: "tech",
     },
+    {
+      id: "reverie",
+      num: "06",
+      name: { ja: "レベリエ・パズル", en: "Reverie Puzzle" },
+      year: "2026",
+      status: { ja: "開発中", en: "In progress" },
+      kind: { ja: "モバイルアプリ", en: "Mobile App" },
+      role: { ja: "個人開発", en: "Solo" },
+      stack: "Capacitor · Vite · TypeScript",
+      short: {
+        ja: "大切な写真をジグソーパズルに変えて、思い出を振り返るアプリ。",
+        en: "Turn cherished photos into jigsaw puzzles — a memory gallery you assemble by hand.",
+      },
+      long: {
+        ja: "手元の写真を自動でピースに分割し、組み立てた完成品はギャラリーに飾られていく。「ただ眺める」より「もう一度たどる」ことで思い出を再生する、温度のある写真アプリを目指しています。Capacitor で iOS / Android / Web を一本化。",
+        en: "Photos are sliced into jigsaw pieces; finished puzzles become a gallery of memories you can revisit. Less about scrolling, more about retracing — a warmer kind of photo app. Capacitor unifies iOS, Android, and Web from one codebase.",
+      },
+      hue: 340, // warm rose
+      theme: "warm",
+    },
+    {
+      id: "logogo",
+      num: "07",
+      name: "LogoGO",
+      year: "2026",
+      status: { ja: "開発中", en: "In progress" },
+      kind: { ja: "デスクトップアプリ", en: "Desktop App" },
+      role: { ja: "個人開発", en: "Solo" },
+      stack: "Electron · JavaScript",
+      short: {
+        ja: "図形と画像を重ねて、自分用のロゴをサッと組めるデスクトップエディタ。",
+        en: "Stack shapes and images into a logo — a small desktop editor for fast iteration.",
+      },
+      long: {
+        ja: "シンプルな図形・画像・テキストをレイヤーとして重ねて、自分用のロゴやアイコンを素早く試作するためのEditor。日本語/英語のメニューを切り替えられ、ショートカット中心で作業できる軽さを優先しています。Electronで自作のショートカット体系を試す実験場でもあります。",
+        en: "A small desktop editor for sketching personal logos and icons — stack shapes, images, and text as layers and iterate fast. Bilingual menus, shortcut-first interactions, and intentional minimalism. Also a sandbox for trying my own keyboard-shortcut grammar in Electron.",
+      },
+      hue: 48, // amber / go-yellow
+      theme: "warm",
+    },
   ],
 
   // Now — currently doing

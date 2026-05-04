@@ -143,6 +143,174 @@ function CaseArt({ project, index }) {
       </div>
     );
   }
+  if (project.id === "reverie") {
+    // jigsaw grid: each cell shows a piece; some are placed (filled), some floating
+    const cols = 4, rows = 5;
+    const placed = new Set(["0-0","1-0","2-0","3-0","0-1","1-1","2-1","0-2","1-2","2-2","0-3","1-3","2-3","3-3","0-4","1-4","2-4","3-4"]);
+    const cell = 70;
+    const ox = 90, oy = 70;
+    const knob = (cx, cy, side) => {
+      // side: 't','r','b','l' — small bump for puzzle look
+      const r = 7;
+      if (side === "t") return `M ${cx - 8} ${cy} q 8 -${r * 1.6} 16 0`;
+      if (side === "b") return `M ${cx - 8} ${cy} q 8 ${r * 1.6} 16 0`;
+      if (side === "l") return `M ${cx} ${cy - 8} q -${r * 1.6} 8 0 16`;
+      if (side === "r") return `M ${cx} ${cy - 8} q ${r * 1.6} 8 0 16`;
+      return "";
+    };
+    return (
+      <div ref={ref} onMouseMove={onMove} className="case-art" style={{ background: bg }}>
+        <svg viewBox="0 0 500 500" width="86%" style={{ filter: "drop-shadow(0 20px 60px rgba(0,0,0,0.4))" }}>
+          {/* photo frame backdrop */}
+          <rect x="60" y="50" width="380" height="400" rx="6"
+            fill="#fdf2ea" stroke={`hsla(${hue}, 30%, 50%, 0.4)`} strokeWidth="1" />
+          <rect x="76" y="66" width="348" height="368" rx="2" fill={`hsla(${hue}, 35%, 80%, 0.55)`} />
+
+          {/* simulated photo (warm gradient) */}
+          <defs>
+            <linearGradient id="rev-photo" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stopColor={`hsl(${hue}, 75%, 78%)`} />
+              <stop offset="0.55" stopColor={`hsl(${(hue + 30) % 360}, 65%, 70%)`} />
+              <stop offset="1" stopColor={`hsl(${(hue + 60) % 360}, 60%, 60%)`} />
+            </linearGradient>
+          </defs>
+          <rect x="76" y="66" width="348" height="368" rx="2" fill="url(#rev-photo)" opacity="0.85" />
+          {/* faint silhouettes — abstract memory */}
+          <circle cx="180" cy="200" r="38" fill="#fff" opacity="0.18" />
+          <circle cx="290" cy="240" r="52" fill="#fff" opacity="0.14" />
+          <ellipse cx="240" cy="380" rx="180" ry="22" fill={`hsla(${hue}, 50%, 30%, 0.18)`} />
+
+          {/* puzzle grid lines */}
+          {Array.from({ length: rows + 1 }).map((_, r) => (
+            <line key={`h${r}`} x1={ox} y1={oy + r * cell} x2={ox + cols * cell} y2={oy + r * cell}
+              stroke="rgba(255,255,255,0.55)" strokeWidth="1" strokeDasharray="2 2" />
+          ))}
+          {Array.from({ length: cols + 1 }).map((_, c) => (
+            <line key={`v${c}`} x1={ox + c * cell} y1={oy} x2={ox + c * cell} y2={oy + rows * cell}
+              stroke="rgba(255,255,255,0.55)" strokeWidth="1" strokeDasharray="2 2" />
+          ))}
+
+          {/* placed-piece highlight */}
+          {[...placed].map(key => {
+            const [c, r] = key.split("-").map(Number);
+            return (
+              <rect key={key} x={ox + c * cell + 1} y={oy + r * cell + 1}
+                width={cell - 2} height={cell - 2}
+                fill={`hsla(${hue}, 60%, 95%, 0.15)`}
+                stroke="rgba(255,255,255,0.7)" strokeWidth="1" />
+            );
+          })}
+
+          {/* missing pieces (gap shadow) */}
+          {[[3,1],[3,2]].map(([c, r]) => (
+            <rect key={`m-${c}-${r}`} x={ox + c * cell + 1} y={oy + r * cell + 1}
+              width={cell - 2} height={cell - 2}
+              fill={`hsla(${hue}, 30%, 25%, 0.45)`} />
+          ))}
+
+          {/* floating loose pieces */}
+          <g transform="translate(330 480) rotate(-12)">
+            <rect x="-30" y="-30" width="60" height="60" rx="2"
+              fill={`hsl(${hue}, 75%, 72%)`} stroke="#fff" strokeWidth="2" />
+            <path d={knob(0, -30, "t")} fill={`hsl(${hue}, 75%, 72%)`} stroke="#fff" strokeWidth="2" />
+            <path d={knob(30, 0, "r")} fill={`hsl(${hue}, 75%, 72%)`} stroke="#fff" strokeWidth="2" />
+          </g>
+          <g transform="translate(420 130) rotate(18)">
+            <rect x="-26" y="-26" width="52" height="52" rx="2"
+              fill={`hsl(${(hue + 30) % 360}, 70%, 68%)`} stroke="#fff" strokeWidth="2" />
+            <path d={knob(-26, 0, "l")} fill={`hsl(${(hue + 30) % 360}, 70%, 68%)`} stroke="#fff" strokeWidth="2" />
+          </g>
+
+          <text x="250" y="478" textAnchor="middle" fontFamily="serif" fontStyle="italic" fontSize="14"
+            fill="rgba(255,255,255,0.85)">— a memory, reassembled</text>
+        </svg>
+      </div>
+    );
+  }
+  if (project.id === "logogo") {
+    return (
+      <div ref={ref} onMouseMove={onMove} className="case-art" style={{ background: bg }}>
+        <svg viewBox="0 0 500 500" width="86%" style={{ filter: "drop-shadow(0 20px 60px rgba(0,0,0,0.45))" }}>
+          {/* window chrome */}
+          <rect x="30" y="40" width="440" height="420" rx="12" fill="#161311" />
+          <rect x="30" y="40" width="440" height="26" rx="12" fill="#1f1a16" />
+          <circle cx="50" cy="53" r="4.5" fill="#ff5f57" />
+          <circle cx="64" cy="53" r="4.5" fill="#febc2e" />
+          <circle cx="78" cy="53" r="4.5" fill="#28c840" />
+          <text x="250" y="58" textAnchor="middle" fontFamily="monospace" fontSize="9" fill="#998870">LogoGO — untitled.logo</text>
+
+          {/* left toolbar */}
+          <rect x="30" y="66" width="44" height="394" fill="#1a1612" />
+          {[0,1,2,3,4,5].map(i => {
+            const sel = i === 1;
+            return (
+              <g key={i} transform={`translate(40 ${82 + i * 44})`}>
+                <rect width="24" height="24" rx="4"
+                  fill={sel ? `hsl(${hue}, 75%, 55%)` : "transparent"}
+                  stroke={sel ? `hsl(${hue}, 75%, 55%)` : "#3a3530"} strokeWidth="1" />
+                {i === 0 && <rect x="6" y="6" width="12" height="12" rx="2" fill="none" stroke={sel ? "#000" : "#998870"} strokeWidth="1.5" />}
+                {i === 1 && <circle cx="12" cy="12" r="6" fill="none" stroke={sel ? "#000" : "#998870"} strokeWidth="1.5" />}
+                {i === 2 && <path d="M 12 5 L 19 19 L 5 19 Z" fill="none" stroke={sel ? "#000" : "#998870"} strokeWidth="1.5" />}
+                {i === 3 && <text x="12" y="16" textAnchor="middle" fontFamily="serif" fontSize="14" fill="#998870">A</text>}
+                {i === 4 && <path d="M 5 12 L 12 5 M 12 5 L 19 12 M 12 5 L 12 19" stroke="#998870" strokeWidth="1.5" fill="none" />}
+                {i === 5 && <rect x="6" y="6" width="12" height="12" rx="0" fill="none" stroke="#998870" strokeDasharray="2 2" strokeWidth="1.2" />}
+              </g>
+            );
+          })}
+
+          {/* canvas */}
+          <rect x="86" y="74" width="296" height="378" rx="4" fill="#0e0c0a" />
+          {/* canvas grid */}
+          {[1,2,3,4].map(i => (
+            <line key={`gx${i}`} x1={86 + i * 60} y1="74" x2={86 + i * 60} y2="452"
+              stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
+          ))}
+          {[1,2,3,4,5].map(i => (
+            <line key={`gy${i}`} x1="86" y1={74 + i * 63} x2="382" y2={74 + i * 63}
+              stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
+          ))}
+
+          {/* logo composition */}
+          <g transform="translate(234 263)">
+            {/* outer ring */}
+            <circle r="92" fill="none" stroke={`hsl(${hue}, 80%, 55%)`} strokeWidth="14" />
+            {/* inner shape */}
+            <rect x="-44" y="-44" width="88" height="88" rx="14"
+              fill={`hsl(${(hue + 30) % 360}, 70%, 60%)`} transform="rotate(12)" />
+            {/* mark */}
+            <text y="12" textAnchor="middle" fontFamily="sans-serif" fontWeight="800"
+              fontSize="56" fill="#0e0c0a">LG</text>
+            {/* selection box */}
+            <rect x="-104" y="-104" width="208" height="208" fill="none"
+              stroke={`hsl(${hue}, 90%, 70%)`} strokeWidth="1" strokeDasharray="3 3" />
+            {[[-104,-104],[104,-104],[-104,104],[104,104]].map(([x,y], i) => (
+              <rect key={i} x={x - 3} y={y - 3} width="6" height="6"
+                fill={`hsl(${hue}, 90%, 70%)`} />
+            ))}
+          </g>
+
+          {/* right layers panel */}
+          <rect x="394" y="74" width="76" height="378" fill="#1a1612" />
+          <text x="404" y="92" fontFamily="monospace" fontSize="8" fill="#998870" letterSpacing="1">LAYERS</text>
+          {[
+            { name: "Mark", active: true },
+            { name: "Square", active: false },
+            { name: "Ring", active: false },
+            { name: "Grid", active: false },
+          ].map((l, i) => (
+            <g key={i} transform={`translate(404 ${108 + i * 26})`}>
+              <rect width="56" height="20" rx="3"
+                fill={l.active ? `hsla(${hue}, 75%, 55%, 0.2)` : "transparent"}
+                stroke={l.active ? `hsl(${hue}, 75%, 55%)` : "#2a2520"} strokeWidth="1" />
+              <circle cx="9" cy="10" r="3" fill={l.active ? `hsl(${hue}, 75%, 55%)` : "#3a3530"} />
+              <text x="18" y="13" fontFamily="monospace" fontSize="8"
+                fill={l.active ? "#fff" : "#998870"}>{l.name}</text>
+            </g>
+          ))}
+        </svg>
+      </div>
+    );
+  }
   if (project.id === "temportal") {
     const peers = [
       { x: 250, y: 90,  label: "ami",   group: "a", screen: false },
