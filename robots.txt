@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /scraps/
+
+Sitemap: https://koheiya-taka.com/sitemap.xml
