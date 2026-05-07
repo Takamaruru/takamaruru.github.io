@@ -35,8 +35,8 @@ const DATA = {
         en: "A Windows/macOS app that organizes projects, subtasks, and notes into a single tree. Collapse to see the whole shape, or dive in and focus — the shuttling between the two is where the feel matters most.",
       },
       // Visual identity
-      hue: 16, // orange-ish
-      theme: "warm",
+      hue: 158, // emerald green
+      theme: "tech",
     },
     {
       id: "iruka",
@@ -77,7 +77,7 @@ const DATA = {
         ja: "提出物・課題を授業コマごとに紐づけ、授業中でも片手で扱える操作感を追求中。学校生活の生活リズムに寄り添うアプリを目指しています。",
         en: "Homework attached to class periods; one-handed operation during class. A companion that matches the school-day rhythm.",
       },
-      hue: 214, // blue
+      hue: 135, // green
       theme: "cool",
     },
     {
@@ -98,8 +98,8 @@ const DATA = {
         ja: "親指クラスタを贅沢に使った左右分離型。基板設計からファームウェア、ケース造形まで全行程を自分で。ソフトとハードの境界で学ぶプロジェクト。",
         en: "A split board centered on a generous thumb cluster. PCB, firmware, and case — all done in-house. Learning at the edge of software and hardware.",
       },
-      hue: 280, // purple
-      theme: "tech",
+      hue: 25, // orange
+      theme: "warm",
     },
     {
       id: "temportal",
@@ -112,6 +112,8 @@ const DATA = {
       stack: "Go · WebSocket · WebRTC",
       platforms: ["macOS", "Windows", "iOS", "Android", "Web"],
       url: "https://temportal.koheiya-taka.com/",
+      screenshot: "assets/screenshots/Temportal/SS-1.png",
+      screenshotScale: 0.85,
       short: {
         ja: "用が済めば消える、一時的なボイスチャットルームのシグナリング基盤。",
         en: "A signaling backbone for ephemeral voice rooms — gone when you leave.",
@@ -120,7 +122,7 @@ const DATA = {
         ja: "WebRTCのP2P通話を支えるGo製シグナリングサーバー。ルームは最大12人、グループ分け・画面共有・チャットに対応し、最後の1人が抜けると痕跡なく消える「その場限り」の場をつくっています。低レイテンシと運用の軽さを両立する設計を追求中。",
         en: "A Go signaling server that brokers WebRTC peer-to-peer calls. Up to 12 people per room, with subgroups, screen share, and chat — and the room evaporates the moment the last person leaves. Built around low latency and a deliberately small operational footprint.",
       },
-      hue: 158, // mint / signal green
+      hue: 280, // purple
       theme: "tech",
     },
     {
@@ -144,7 +146,7 @@ const DATA = {
         ja: "手元の写真を自動でピースに分割し、組み立てた完成品はギャラリーに飾られていく。「ただ眺める」より「もう一度たどる」ことで思い出を再生する、温度のある写真アプリを目指しています。Capacitor で iOS / Android / Web を一本化。",
         en: "Photos are sliced into jigsaw pieces; finished puzzles become a gallery of memories you can revisit. Less about scrolling, more about retracing — a warmer kind of photo app. Capacitor unifies iOS, Android, and Web from one codebase.",
       },
-      hue: 340, // warm rose
+      hue: 30, // light orange / peach
       theme: "warm",
     },
     {
