@@ -16,6 +16,24 @@ function CaseArt({ project, index }) {
 
   const bg = `radial-gradient(circle at ${mx * 100}% ${my * 100}%, hsl(${hue}, 85%, 62%) 0%, hsl(${hue}, 70%, 38%) 40%, hsl(${hue}, 60%, 18%) 100%)`;
 
+  // Screenshot path — when a project provides one, it replaces the SVG art entirely.
+  if (project.screenshot) {
+    const altName = typeof project.name === "string" ? project.name : (project.name.en || project.name.ja);
+    const scale = typeof project.screenshotScale === "number" ? project.screenshotScale : 1;
+    const shiftY = typeof project.screenshotShiftY === "number" ? project.screenshotShiftY : 0;
+    const imgStyle = {};
+    if (scale !== 1) {
+      imgStyle.maxWidth = `${scale * 100}%`;
+      imgStyle.maxHeight = `${scale * 100}%`;
+    }
+    if (shiftY !== 0) imgStyle.transform = `translateY(${shiftY}%)`;
+    return (
+      <div ref={ref} onMouseMove={onMove} className="case-art case-art--shot" style={{ background: bg }}>
+        <img src={project.screenshot} alt={altName} className="case-art__shot" style={Object.keys(imgStyle).length ? imgStyle : undefined} loading="lazy" />
+      </div>
+    );
+  }
+
   if (project.id === "capcell") {
     return (
       <div ref={ref} onMouseMove={onMove} className="case-art" style={{ background: bg }}>

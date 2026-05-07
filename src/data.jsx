@@ -17,12 +17,14 @@ const DATA = {
       id: "capcell",
       num: "01",
       name: "CapCell",
-      year: "2025",
+      year: "2026",
       status: { ja: "リリース済み", en: "Shipped" },
       kind: { ja: "デスクトップアプリ", en: "Desktop App" },
       role: { ja: "個人開発", en: "Solo" },
-      stack: "Flutter · Dart",
+      stack: "Tauri · Rust",
       url: "https://takamaruru.github.io/CapCell_HP/",
+      screenshot: "assets/screenshots/CapCell/screenshot.png",
+      screenshotScale: 1,
       short: {
         ja: "プロジェクトをツリー構造で見渡せる、デスクトップ向けのタスク管理ツール。",
         en: "A desktop project-tree app for managing nested tasks at a glance.",
@@ -125,6 +127,9 @@ const DATA = {
       kind: { ja: "モバイルアプリ", en: "Mobile App" },
       role: { ja: "個人開発", en: "Solo" },
       stack: "Capacitor · Vite · TypeScript",
+      screenshot: "assets/screenshots/Revelio-Puzzle/puzzle-3.png",
+      screenshotScale: 0.85,
+      screenshotShiftY: -8,
       short: {
         ja: "大切な写真をジグソーパズルに変えて、思い出を振り返るアプリ。",
         en: "Turn cherished photos into jigsaw puzzles — a memory gallery you assemble by hand.",
@@ -184,9 +189,9 @@ const DATA = {
 
   // Socials
   links: [
-    { label: "GitHub", href: "#" },
+    { label: "GitHub", href: "https://github.com/Takamaruru" },
     { label: "X / Twitter", href: "#" },
-    { label: "Zenn", href: "#" },
+    { label: "Zenn", href: "https://zenn.dev/takamaru" },
     { label: "Email", href: "mailto:hello@koheiya.dev" },
   ],
 };
