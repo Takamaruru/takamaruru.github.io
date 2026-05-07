@@ -110,7 +110,7 @@ const DATA = {
       kind: { ja: "リアルタイム通信", en: "Realtime Server" },
       role: { ja: "個人開発", en: "Solo" },
       stack: "Go · WebSocket · WebRTC",
-      platforms: ["Web"],
+      platforms: ["macOS", "Windows", "iOS", "Android", "Web"],
       url: "https://temportal.koheiya-taka.com/",
       short: {
         ja: "用が済めば消える、一時的なボイスチャットルームのシグナリング基盤。",
