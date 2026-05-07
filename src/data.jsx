@@ -47,6 +47,7 @@ const DATA = {
       kind: { ja: "モバイルアプリ", en: "Mobile App" },
       role: { ja: "個人開発", en: "Solo" },
       stack: "Flutter · Dart",
+      platforms: ["iOS", "Android"],
       short: {
         ja: "マップで探したエリアにいる友達だけが見える、位置情報共有アプリ。",
         en: "A location-sharing app: friends appear only inside the area you search.",
@@ -67,6 +68,7 @@ const DATA = {
       kind: { ja: "学生向けツール", en: "Student Tool" },
       role: { ja: "個人開発", en: "Solo" },
       stack: "Expo · React Native · TypeScript",
+      platforms: ["iOS", "Android", "Web"],
       short: {
         ja: "時間割に紐づく「今日やること」だけが並ぶ、学生のための小さなToDo。",
         en: "A tiny to-do built around the timetable — only today's classwork shows up.",
@@ -87,6 +89,7 @@ const DATA = {
       kind: { ja: "ハードウェア", en: "Hardware" },
       role: { ja: "設計 / 基板 / ファーム", en: "PCB, firmware, keymap" },
       stack: "KiCad · QMK · 3D Printing",
+      platforms: ["Hardware"],
       short: {
         ja: "親指を主役にした、ずっと触っていたい左右分割キーボード。",
         en: "A split keyboard where the thumb finally gets to lead.",
@@ -107,6 +110,7 @@ const DATA = {
       kind: { ja: "リアルタイム通信", en: "Realtime Server" },
       role: { ja: "個人開発", en: "Solo" },
       stack: "Go · WebSocket · WebRTC",
+      platforms: ["Web"],
       url: "https://temportal.koheiya-taka.com/",
       short: {
         ja: "用が済めば消える、一時的なボイスチャットルームのシグナリング基盤。",
@@ -128,6 +132,7 @@ const DATA = {
       kind: { ja: "モバイルアプリ", en: "Mobile App" },
       role: { ja: "個人開発", en: "Solo" },
       stack: "Capacitor · Vite · TypeScript",
+      platforms: ["iOS", "Android", "Web"],
       screenshot: "assets/screenshots/Revelio-Puzzle/puzzle-3.png",
       screenshotScale: 0.85,
       screenshotShiftY: -8,
@@ -151,6 +156,7 @@ const DATA = {
       kind: { ja: "デスクトップアプリ", en: "Desktop App" },
       role: { ja: "個人開発", en: "Solo" },
       stack: "Electron · JavaScript",
+      platforms: ["macOS", "Windows"],
       short: {
         ja: "図形と画像を重ねて、自分用のロゴをサッと組めるデスクトップエディタ。",
         en: "Stack shapes and images into a logo — a small desktop editor for fast iteration.",

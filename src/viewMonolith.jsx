@@ -599,6 +599,12 @@ function MonolithView({ lang }) {
                   <dt>Role</dt>
                   <dd>{L(p.role, lang)}</dd>
                 </div>
+                {p.platforms && p.platforms.length > 0 && (
+                  <div style={{ gridColumn: "1 / -1" }}>
+                    <dt>{lang === "ja" ? "対応プラットフォーム" : "Platforms"}</dt>
+                    <dd>{p.platforms.join(" · ")}</dd>
+                  </div>
+                )}
                 <div style={{ gridColumn: "1 / -1" }}>
                   <dt>Stack</dt>
                   <dd>{p.stack}</dd>
