@@ -22,6 +22,7 @@ const DATA = {
       kind: { ja: "デスクトップアプリ", en: "Desktop App" },
       role: { ja: "個人開発", en: "Solo" },
       stack: "Tauri · Rust",
+      platforms: ["macOS", "Windows"],
       url: "https://takamaruru.github.io/CapCell_HP/",
       screenshot: "assets/screenshots/CapCell/screenshot.png",
       screenshotScale: 1,
