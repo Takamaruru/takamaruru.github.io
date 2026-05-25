@@ -114,6 +114,7 @@ const DATA = {
       url: "https://temportal.koheiya-taka.com/",
       screenshot: "assets/screenshots/Temportal/SS-1.png",
       screenshotScale: 0.85,
+      screenshotShiftY: -8,
       short: {
         ja: "用が済めば消える、一時的なボイスチャットルームのシグナリング基盤。",
         en: "A signaling backbone for ephemeral voice rooms — gone when you leave.",
@@ -159,6 +160,8 @@ const DATA = {
       role: { ja: "個人開発", en: "Solo" },
       stack: "Electron · JavaScript",
       platforms: ["macOS", "Windows"],
+      screenshot: "assets/screenshots/LogoGO/screenshot.png",
+      screenshotScale: 1,
       short: {
         ja: "図形と画像を重ねて、自分用のロゴをサッと組めるデスクトップエディタ。",
         en: "Stack shapes and images into a logo — a small desktop editor for fast iteration.",
